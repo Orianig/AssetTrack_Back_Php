@@ -10,4 +10,9 @@ class AssetsUser extends Model
     use HasFactory;
 
     protected $table = 'bookings';
+    
+    public function historicalBookings()
+{
+    return $this->hasMany(HistoricalBooking::class, 'user_id', 'user_id');
+}
 }
