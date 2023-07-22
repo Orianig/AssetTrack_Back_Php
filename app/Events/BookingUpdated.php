@@ -16,10 +16,10 @@ class BookingUpdated
     /**
      * Create a new event instance.
      *
-     * @param  Booking  $booking
+     * @param  AssetsUser  $assetsUser
      * @return void
      */
-    public function __construct(AssetsUser  $assetsUser)
+    public function __construct(AssetsUser $assetsUser)
     {
         $this->assetsUser = $assetsUser;
     }
