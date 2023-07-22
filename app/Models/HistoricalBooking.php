@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class HistoricalBooking extends Model
 {
     use HasFactory;
+   
+    public function booking()
+    
+    {
+        return $this->belongsTo(AssetsUser::class, 'user_id', 'user_id')->where('asset_id', $this->asset_id);
+    }
 }
