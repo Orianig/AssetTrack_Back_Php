@@ -57,4 +57,9 @@ class User extends Authenticatable
             return $this->belongsToMany(Asset::class, 'bookings', 'asset_id', 'user_id')
                         ->withPivot('status', 'start_date', 'end_date');
         }
+
+        public function teams()
+        {
+            return $this->belongsToMany(Team::class, 'teams_users', 'user_id', 'team_id');      
+        }
     }

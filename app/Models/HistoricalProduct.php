@@ -5,13 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class HistoricalBooking extends Model
+class HistoricalProduct extends Model
 {
     use HasFactory;
-   
-    public function booking()
-    
+
+    public function product()
     {
-        return $this->belongsTo(AssetsUser::class, 'user_id', 'user_id');
+        return $this->belongsTo(Product::class, 'product_id','product_id');
     }
 }
