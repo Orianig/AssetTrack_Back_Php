@@ -42,5 +42,29 @@ class DatabaseSeeder extends Seeder
         $this->call([
             TeamsUserSeeder::class
         ]);
+
+        $this->call([
+            ProjectSeeder::class
+        ]);
+
+        $this->call([
+            ProviderSeeder::class
+        ]);
+
+        $this->call([
+            InventoryProjectSeeder::class
+        ]);
+
+        $this->call([
+            InventorySeeder::class
+        ]);
+
+        $this->call([
+            ProductSeeder::class
+        ]);
+
+        $this->call([
+            ProductsProviderSeeder::class
+        ]);
     }
 }
