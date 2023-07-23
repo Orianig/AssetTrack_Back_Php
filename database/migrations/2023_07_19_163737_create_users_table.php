@@ -19,11 +19,10 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->unsignedBigInteger('role_id');
-            $table->integer('age')->nullable();
             $table->string('dni')->unique();
-            $table->date('birthdate')->nullable();
-            $table->integer('phone_number')->unique();
-            $table->string('employee_number')->unique();
+            $table->date('birthdate')->nullable(); //"YYYY-MM-DD"
+            $table->bigInteger ('phone_number')->unique();
+            $table->bigInteger ('employee_number')->unique();
             $table->enum('gender', ['male', 'female']);
             $table->string('category')->nullable();
             $table->string('image')->nullable();
