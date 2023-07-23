@@ -19,13 +19,10 @@ return new class extends Migration
             $table->date('end_date');
             $table->unsignedBigInteger('team');
             $table->string('description');
-            $table->unsignedBigInteger('inventory');
             $table->timestamps();
             
             //references
-
             $table->foreign('team')->references('id')->on('teams_users');
-            $table->foreign('inventory')->references('id')->on('inventory_projects');
         });
     }
 
