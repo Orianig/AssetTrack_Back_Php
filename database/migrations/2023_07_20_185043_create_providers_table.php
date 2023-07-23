@@ -16,8 +16,8 @@ return new class extends Migration
             $table->string('contact_name');
             $table->string('company');
             $table->string('location');
-            $table->integer('discount');
-            $table->integer('phone_number')->unique();
+            $table->decimal('discount', 8, 2);
+            $table->bigInteger('phone_number')->unique();
             $table->string('email')->unique();
             $table->timestamps();
         });
