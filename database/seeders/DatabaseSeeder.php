@@ -22,5 +22,25 @@ class DatabaseSeeder extends Seeder
         $this->call([
             RoleSeeder::class
         ]);
+
+        $this->call([
+            UserSeeder::class
+        ]);
+
+        $this->call([
+            AssetSeeder::class
+        ]);
+
+        $this->call([
+            BookingSeeder::class
+        ]);
+
+        $this->call([
+            TeamSeeder::class
+        ]);
+
+        $this->call([
+            TeamsUserSeeder::class
+        ]);
     }
 }
