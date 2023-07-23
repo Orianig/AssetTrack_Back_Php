@@ -15,12 +15,14 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('project_id');
             $table->unsignedBigInteger('inventory_id');
+
+             //unique pivot table parameters
+            $table->integer('requested_quantity');
             $table->timestamps();
 
             //references
-
             $table->foreign('project_id')->references('id')->on('projects');
-            $table->foreign('inventory_id')->references('id')->on('historical_inventory');
+            $table->foreign('inventory_id')->references('id')->on('inventories');
         });
     }
 
