@@ -7,6 +7,12 @@ use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Event;
 
+use App\Events\BookingUpdated;
+use App\Events\ProductUpdated;
+use App\Observers\BookingObserver;
+use App\Observers\ProductObserver;
+use App\Observers\InventoryProjectObserver;
+
 class EventServiceProvider extends ServiceProvider
 {
     /**
@@ -15,13 +21,24 @@ class EventServiceProvider extends ServiceProvider
      * @var array<class-string, array<int, class-string>>
      */
     protected $listen = [
-        Registered::class => [
-            SendEmailVerificationNotification::class,
+        // Registered::class => [
+        //     SendEmailVerificationNotification::class,
+        // ],
+
+        //historial de recervas
+        BookingUpdated::class => [
+            BookingObserver::class,
         ],
 
-        \App\Events\BookingUpdated::class => [
-            \App\Observers\BookingObserver::class,
+        //historial de productos
+        ProductUpdated::class => [
+            ProductObserver::class,
         ],
+
+        // //cantidad inventario-proyecto
+        // InventoryProject::class => [
+        //     InventoryProjectObserver::class,
+        // ],
     ];
 
     /**
