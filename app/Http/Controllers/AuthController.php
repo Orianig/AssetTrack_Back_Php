@@ -118,4 +118,26 @@ public function login(Request $request)
         ], Response::HTTP_INTERNAL_SERVER_ERROR);
     }
 }
+
+//LOGOUT
+
+public function logout(Request $request)
+{
+
+    try {
+        $headerToken = $request->bearerToken();
+        $token = PersonalAccessToken::findToken($headerToken);
+        $token->delete();
+
+        return response()->json([
+            'message' => 'User logged out'
+        ], Response::HTTP_OK);
+    } catch (\Throwable $th) {
+        Log::error('Error logging user out ' . $th->getMessage());
+
+        return response()->json([
+            'message' => 'Error logging user out'
+        ], Response::HTTP_INTERNAL_SERVER_ERROR);
+    }
+}
 }
