@@ -17,10 +17,29 @@ use Illuminate\Support\Facades\DB;
 |
 */
 
+//SERVER ACTIVE
 Route::get('/', function () {
-    return view('welcome');
+    return 'Welcome to the beginning of nothingness';
 });
 
-Route::get('/post', [AuthController::class, 'index']);
 
-Route::get('/posting/{id}', [AuthController::class, 'index1']);
+// AUTH CONTROLLER
+Route::post('/register', [AuthController::class, 'register']);
+Route::get('/login', [AuthController::class, 'login']);
+
+//USER CONTROLLER
+
+
+// TEAMS CONTROLLER
+
+
+//PROJECT CONTROLLER
+
+
+//INVENTORY CONTROLLER
+
+
+//PRODUCT CONTROLLER
+
+
+//PROVIDER CONTROLLER
