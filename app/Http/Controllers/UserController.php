@@ -4,13 +4,15 @@ namespace App\Http\Controllers;
 
 //necesary facades - class
 
-use Illuminate\Support\Facades\Log;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Support\Facades\Log;
 
 class UserController extends Controller
 {
     //GET PROFILE
-
     public function profile()
     {
         try {
@@ -36,8 +38,49 @@ class UserController extends Controller
         }
     }
 
-
     //UPDATE PROFILE
+    public function updateProfile(Request $request)
+    {
+        try {
+
+            //obtencion del usuario autenticado
+            $user = Auth::user();
+
+            //validacion de los datos recibidos en la solicitud
+            $validator = Validator::make($request->all(), [
+                'name' => 'string|max:255',
+                'surname' => 'string|max:255',
+                'dni' => 'nullable|string|unique:users,dni,' . $user->id,
+                'birthdate' => 'nullable|date_format:Y-m-d',
+                'phone_number' => 'nullable|numeric|unique:users,phone_number,' . $user->id,
+                'gender' => 'nullable|in:male,female',
+                'category' => 'nullable|string',
+                'image' => 'nullable|string',
+            ]);
+
+
+            if ($validator->fails()) {
+                return response()->json($validator->errors(), Response::HTTP_BAD_REQUEST);
+            }
+
+            // Obtener los datos validados
+            $validData = $validator->validated();
+
+            // Actualizar los campos del perfil del usuario con los datos validados
+            $user->update($validData); //esta en rojo pero esta funcionando correctamemte
+
+            return response()->json([
+                'message' => 'User profile updated successfully',
+                'data' => $user,
+            ], Response::HTTP_OK);
+        } catch (\Throwable $th) {
+            Log::error('Error updating user profile: ' . $th->getMessage());
+
+            return response()->json([
+                'message' => 'Error updating user profile'
+            ], Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
+    }
 
 
 
