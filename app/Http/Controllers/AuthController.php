@@ -38,7 +38,7 @@ class AuthController extends Controller
 
             $validData = $validator->validated();
 
-            $lastEmployeeNumber = User::max('employee_number');
+            $lastEmployeeNumber = User::withoutGlobalScopes()->max('employee_number');
             $newEmployeeNumber = $lastEmployeeNumber + 1;
             $paddedEmployeeNumber = str_pad($newEmployeeNumber, 3, '0', STR_PAD_LEFT);
 
@@ -61,11 +61,11 @@ class AuthController extends Controller
                 'data' => $newUser,
                 'token' => $token
             ], Response::HTTP_CREATED);
-        } catch (\Throwable $th) {
-            Log::error('Error registering user ' . $th->getMessage());
-
+        } catch (\Exception $ex) {
+            Log::error('Error registering user: ' . $ex->getMessage());
             return response()->json([
-                'message' => 'Error registering user'
+                'message' => 'Error registering user',
+                'error' => $ex->getMessage()
             ], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
