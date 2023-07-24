@@ -31,6 +31,7 @@ Route::post('/login', [AuthController::class, 'login']);
 
 //USER CONTROLLER
 Route::get('/profile', [UserController::class, 'profile'])->middleware(['auth:sanctum']);
+Route::put('/profile/update', [UserController::class, 'updateProfile'])->middleware(['auth:sanctum']);
 
 // TEAMS CONTROLLER
 
