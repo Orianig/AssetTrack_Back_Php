@@ -1,10 +1,12 @@
 <?php
 
-use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
 
+//CONTROLLERS
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,7 +30,7 @@ Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 
 //USER CONTROLLER
-
+Route::get('/profile', [UserController::class, 'profile'])->middleware(['auth:sanctum']);
 
 // TEAMS CONTROLLER
 
