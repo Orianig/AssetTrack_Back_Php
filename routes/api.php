@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\DB;
+
 
 //CONTROLLERS
 use App\Http\Controllers\AuthController;
@@ -32,6 +32,7 @@ Route::post('/login', [AuthController::class, 'login']);
 //USER CONTROLLER
 Route::get('/profile', [UserController::class, 'profile'])->middleware(['auth:sanctum']);
 Route::put('/profile/update', [UserController::class, 'updateProfile'])->middleware(['auth:sanctum']);
+Route::delete('/deleteUser', [UserController::class, 'deleteUser'])->middleware(['auth:sanctum', 'isAdmin']);
 
 // TEAMS CONTROLLER
 
