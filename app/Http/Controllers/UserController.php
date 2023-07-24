@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Log;
+use App\Models\User;
 
 class UserController extends Controller
 {
@@ -82,8 +83,32 @@ class UserController extends Controller
         }
     }
 
-
-
-
     //DELETE PROFILE
+
+    public function deleteUser($id)
+    {
+        try {
+                // busqueda del usuario por su id
+                $user = User::find($id);
+
+                // verificacion de la existencia del usuario
+                if (!$user) {
+                    return response()->json([
+                        'message' => 'User not found'
+                    ], Response::HTTP_NOT_FOUND);
+                }
+
+                $user->delete();
+                return response()->json([
+                    'message' => 'User deleted'
+                ], Response::HTTP_OK);
+
+        } catch (\Throwable $th) {
+            Log::error('Error deleting user ' . $th->getMessage());
+
+            return response()->json([
+                'message' => 'Error deleting user'
+            ], Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
+    }
 }
