@@ -25,7 +25,7 @@ class UserSeeder extends Seeder
                 'dni' => '2656789T',
                 'birthdate' => '1994-09-12',
                 'phone_number' => 111111111,
-                'employee_number' => '1111111',
+                'employee_number' => 000,
                 'gender' => 'female',
                 'category' => 'CTO'
             ],
@@ -39,7 +39,7 @@ class UserSeeder extends Seeder
                 'dni' => '2656444Y',
                 'birthdate' => '1991-05-02',
                 'phone_number' => 22222222,
-                'employee_number' => '222222',
+                'employee_number' => 001,
                 'gender' => 'male',
                 'category' => 'Engineer'
             ],
@@ -53,7 +53,7 @@ class UserSeeder extends Seeder
                 'dni' => '2658844P',
                 'birthdate' => '1990-08-17',
                 'phone_number' => 21345678,
-                'employee_number' => '098716273',
+                'employee_number' => 002,
                 'gender' => 'female',
                 'category' => 'Engineer'
             ],
@@ -67,7 +67,7 @@ class UserSeeder extends Seeder
                 'dni' => '2777444Y',
                 'birthdate' => '1980-06-01',
                 'phone_number' => 23333333,
-                'employee_number' => '3333333',
+                'employee_number' => 003,
                 'gender' => 'female',
                 'category' => 'Architect'
             ],
@@ -81,7 +81,7 @@ class UserSeeder extends Seeder
                 'dni' => '876567B',
                 'birthdate' => '1995-04-05',
                 'phone_number' => 2534356564,
-                'employee_number' => '777775',
+                'employee_number' => 004,
                 'gender' => 'male',
                 'category' => 'Architect'
             ],
@@ -95,7 +95,7 @@ class UserSeeder extends Seeder
                 'dni' => '987689L',
                 'birthdate' => '1987-11-29',
                 'phone_number' => 9785645,
-                'employee_number' => '7453455',
+                'employee_number' => 005,
                 'gender' => 'female',
                 'category' => 'Engineer'
             ],

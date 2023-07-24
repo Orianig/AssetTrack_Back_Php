@@ -38,13 +38,19 @@ class AuthController extends Controller
 
             $validData = $validator->validated();
 
+            $lastEmployeeNumber = User::max('employee_number');
+            $newEmployeeNumber = $lastEmployeeNumber + 1;
+            $paddedEmployeeNumber = str_pad($newEmployeeNumber, 3, '0', STR_PAD_LEFT);
+
+
             //creation new user 
             $newUser = User::create([
                 'name' => $validData['name'],
                 'surname' => $validData['surname'],
                 'email' => $validData['email'],
                 'password' => bcrypt($validData['password']),
-                'role_id' => 3
+                'role_id' => 3,
+                'employee_number' => $paddedEmployeeNumber,
             ]);
 
             //Token generation
