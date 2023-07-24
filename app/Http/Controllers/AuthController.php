@@ -70,4 +70,52 @@ class AuthController extends Controller
         }
     }
 
+//LOGIN
+
+public function login(Request $request)
+{
+    try {
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|email',
+            'password' => 'required'
+        ], [
+            'email' => 'Invalid email or password',
+            'password' => 'Invalid email or password'
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 400);
+        }
+
+        $validData = $validator->validated();
+
+        $user = User::where('email', $validData['email'])->first();
+
+        if (!$user) {
+            return response()->json([
+                'message' => 'Invalid email or password'
+            ], Response::HTTP_FORBIDDEN);
+        }
+
+        if (!Hash::check($validData['password'], $user->password)) {
+            return response()->json([
+                'message' => 'Invalid email or password'
+            ], Response::HTTP_FORBIDDEN);
+        }
+
+        $token = $user->createToken('apiToken')->plainTextToken;
+
+        return response()->json([
+            'message' => 'User logged in',
+            'data' => $user,
+            'token' => $token
+        ], Response::HTTP_CREATED);
+    } catch (\Throwable $th) {
+        Log::error('Error logging user in ' . $th->getMessage());
+
+        return response()->json([
+            'message' => 'Error logging user in'
+        ], Response::HTTP_INTERNAL_SERVER_ERROR);
+    }
+}
 }
