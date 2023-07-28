@@ -14,7 +14,7 @@ use App\Models\User;
 class UserController extends Controller
 {
     //GET PROFILE
-    public function profile()
+    public function getUserProfile()
     {
         try {
 
