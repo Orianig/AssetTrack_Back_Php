@@ -20,13 +20,17 @@ class TeamController extends Controller
     {try {
         $user = $request->user(); // Get the authenticated user from the token
         // Get the teams the user belongs to
-        $teams = $user->teams;
+        $teams = $user->teams()->with('users')->get();
         // Check if the user belongs to any team
         if ($teams->isEmpty()) {
             return response()->json(['message' => 'El usuario no pertenece a ningún equipo.']);
         }
 
-        return response()->json($teams);
+        return response()->json([
+            'message' => 'Teams found',
+            'data' => $teams,
+        ], Response::HTTP_OK); // 200 state
+
 
     } catch (\Throwable $th) {
         Log::error('Error retrieving user teams: ' . $th->getMessage());
