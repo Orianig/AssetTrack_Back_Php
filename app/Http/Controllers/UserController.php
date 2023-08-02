@@ -88,21 +88,20 @@ class UserController extends Controller
     public function deleteUser($id)
     {
         try {
-                // busqueda del usuario por su id
-                $user = User::find($id);
+            // busqueda del usuario por su id
+            $user = User::find($id);
 
-                // verificacion de la existencia del usuario
-                if (!$user) {
-                    return response()->json([
-                        'message' => 'User not found'
-                    ], Response::HTTP_NOT_FOUND);
-                }
-
-                $user->delete();
+            // verificacion de la existencia del usuario
+            if (!$user) {
                 return response()->json([
-                    'message' => 'User deleted'
-                ], Response::HTTP_OK);
+                    'message' => 'User not found'
+                ], Response::HTTP_NOT_FOUND);
+            }
 
+            $user->delete();
+            return response()->json([
+                'message' => 'User deleted'
+            ], Response::HTTP_OK);
         } catch (\Throwable $th) {
             Log::error('Error deleting user ' . $th->getMessage());
 

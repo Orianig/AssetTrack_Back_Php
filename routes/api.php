@@ -30,8 +30,8 @@ Route::post('/auth/register', [AuthController::class, 'register']);
 Route::post('/auth/login', [AuthController::class, 'login']);
 
 //USER CONTROLLER
-Route::get('/profile', [UserController::class, 'getUserProfile'])->middleware(['auth:sanctum']);
-Route::put('/profile/update', [UserController::class, 'updateProfile'])->middleware(['auth:sanctum']);
+Route::get('/user/profile', [UserController::class, 'getUserProfile'])->middleware(['auth:sanctum']);
+Route::put('/user/profile/updateProfile', [UserController::class, 'updateProfile'])->middleware(['auth:sanctum']);
 Route::delete('/deleteUser', [UserController::class, 'deleteUser'])->middleware(['auth:sanctum', 'isAdmin']);
 
 // TEAMS CONTROLLER
