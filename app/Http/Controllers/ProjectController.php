@@ -13,7 +13,6 @@ use App\Models\User;
 
 class ProjectController extends Controller
 {
-
     //GET USER PROJECT
     public function getUserProjects(Request $request)
     {
@@ -24,16 +23,9 @@ class ProjectController extends Controller
         if ($teams->isEmpty()) {
             return response()->json(['message' => 'El usuario no pertenece a ningún equipo.']);
         }
-    // Initialize an array to store the projects of all teams
-    $userProjects = [];
 
-    // Loop through each team to get its associated projects
-    foreach ($teams as $team) {
-        $teamProjects = $team->projects()->get();
-        // Append the projects of the team to the userProjects array
-        $userProjects = array_merge($userProjects, $teamProjects->toArray());
-    }
+    // Eager load the projects for each team
+    $teams->load('projects');
 
-    return response()->json($userProjects);
-}
-}
+    return response()->json($teams);
+}}
