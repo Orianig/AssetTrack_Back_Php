@@ -110,4 +110,23 @@ class UserController extends Controller
             ], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
+
+    //ALL USERS
+    public function getAllUsers()
+{
+    try {
+        $users = User::all();
+
+        return response()->json([
+            'message' => 'Users found',
+            'data' => $users,
+        ], Response::HTTP_OK); // 200 state
+
+    } catch (\Throwable $th) {
+        Log::error('Error retrieving users ' . $th->getMessage());
+        return response()->json([
+            'message' => 'Error retrieving users'
+        ], Response::HTTP_INTERNAL_SERVER_ERROR); //500 state
+    }
+}
 }
