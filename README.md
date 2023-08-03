@@ -1,66 +1,117 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# ASSETTRACK --> PHP + LARAVEL
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Este proyecto es la entrega final del curso de GeeksHub academy. Consiste en un software para la gestion de invetarios (productos-proveedores), activos, proyectos y equipos de una empresa.
 
-## About Laravel
+Este proyecto corresponde al back-end , por lo tanto, para visualizar el repositorio del front-end sigue este link 
+👉 [Repo Front](https://github.com/Orianig/AssetTrack_Front_React) 👈
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Para interactuar con mi software te dejo el siguiente link
+👉 [web del software](https://main--chimerical-trifle-d21da6.netlify.app/) 👈
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Diseño bbdd
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+![Configuracion de la base de datos](https://github.com/Orianig/AssetTrack_Back_Php/blob/main/resources/images/bbdd.png)
 
-## Learning Laravel
+## Tecnologías utilizadas
+  
+- JavaScript
+- Postman
+- Laravel
+- Php
+- MySQL
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+##  Endpoints
+<details>
+  <summary><strong>Endpoints:</strong></summary>
+    
+• AUTH
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+ /register
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+  POST `http://127.0.0.1:8000/api/auth/register`
 
-## Laravel Sponsors
+body:
+  
+```
+    {
+       name
+       surname
+       email
+       password
+    }
+```
+  
+/login
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+body:
+  
+```
+    {
+        "email":"oriana@example.com",
+        "password":"123456Aa"
+    }
+ ```
+  
+  POST `http://127.0.0.1:8000/api/auth/login`
 
-### Premium Partners
+  • USER
+  
+ /profile
+  
+  GET `http://127.0.0.1:8000/api/user/profile`
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+/allProfiles
 
-## Contributing
+ GET `http://127.0.0.1:8000/api/user/allUsers`
+  
+ /UpdateProfile
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+  PUT `http://127.0.0.1:8000/api/user/updateProfile`
+  
+ /userTeams
 
-## Code of Conduct
+  GET `http://127.0.0.1:8000/api/user/teams`
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+   /userProjects
 
-## Security Vulnerabilities
+  GET `http://127.0.0.1:8000/api/user/projects`
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+   • TEAMS
+  
+ /allTeams
+  
+  GET `http://127.0.0.1:8000/api/team/allTeams`
 
-## License
+/newTeam (Admin)
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+POST `http://127.0.0.1:8000/api/team/newTeam`
+
+/updateTeam (Admin)
+
+PUT `http://127.0.0.1:8000/api/team/updateTeam`
+
+ • PROJECTS
+  
+ /allProjects
+  
+  GET `http://127.0.0.1:8000/api/project/allProjects`
+
+/newProject (Admin)
+
+POST `http://127.0.0.1:8000/api/project/newProject`
+
+/updateProject (Admin)
+
+PUT `http://127.0.0.1:8000/api/project/updateProject`
+
+/deleteProject (Admin)
+
+PUT `http://127.0.0.1:8000/api/project/deleteProject`
+
+</details>
+
+## Licencia
+
+License and Copyright Add MIT Licence. The style is completely created by Oriana Infante. 
+
+
