@@ -1,7 +1,6 @@
 # ASSETTRACK --> PHP + LARAVEL
 
 Este proyecto es la entrega final del curso de GeeksHub academy. Consiste en un software para la gestion de invetarios (productos-proveedores), activos, proyectos y equipos de una empresa.
-Se diseño de forma tal que permita una interfaz de usuario eficiente y completa, siempre contemplando una funcionalidad responsive e interactiva.
 
 Este proyecto corresponde al back-end , por lo tanto, para visualizar el repositorio del front-end sigue este link 
 👉 [Repo Front](https://github.com/Orianig/AssetTrack_Front_React) 👈
